@@ -1,17 +1,21 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import LoginScreen from '_scenes/login';
+import {createStackNavigator} from '@react-navigation/stack';
+import Login from '_scenes/login';
 
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-const AuthNavigator = () => {
+const AuthNavigator = (isSignout) => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Login" component={LoginScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{
+          title: 'Login',
+          animationTypeForReplace: isSignout ? 'pop' : 'push',
+        }}
+      />
+    </Stack.Navigator>
   );
 };
 

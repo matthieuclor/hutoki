@@ -1,15 +1,10 @@
 import React from 'react';
-// import AuthNavigator from './auth_navigator';
-// import AppNavigator from './app_navigator';
-import {createStackNavigator} from '@react-navigation/stack';
+import AuthNavigator from './auth_navigator';
+import AppNavigator from './app_navigator';
 import {NavigationContainer} from '@react-navigation/native';
 import Splash from '_scenes/splash';
-import Home from '_scenes/home';
-import Login from '_scenes/login';
 import {connect} from 'react-redux';
 import {restoreToken, signIn} from '_actions/authentification';
-
-const Stack = createStackNavigator();
 
 function RootNavigator(props) {
   if (props.user.isLoading) {
@@ -18,20 +13,11 @@ function RootNavigator(props) {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        {props.user.isSignout ? (
-          <Stack.Screen
-            name="Login"
-            component={Login}
-            options={{
-              title: 'Login',
-              animationTypeForReplace: props.user.isSignout ? 'pop' : 'push',
-            }}
-          />
-        ) : (
-          <Stack.Screen name="Home" component={Home} />
-        )}
-      </Stack.Navigator>
+      {props.user.isSignout ? (
+        <AuthNavigator />
+      ) : (
+        <AppNavigator isSignout={props.user.isSignout} />
+      )}
     </NavigationContainer>
   );
 }
