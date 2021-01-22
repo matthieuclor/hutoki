@@ -15,10 +15,6 @@ const LoginScreen = ({navigation}) => {
   return (
     <SafeAreaView>
       <Text>Screen: Login</Text>
-
-      <TouchableHighlight onPress={() => navigation.navigate('Home')}>
-        <Text>Go to home</Text>
-      </TouchableHighlight>
     </SafeAreaView>
   );
 };

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {SafeAreaView, Text, TouchableHighlight, Button} from 'react-native';
+import {SafeAreaView, Text, Button} from 'react-native';
 import {connect} from 'react-redux';
 import {changeCount} from '_actions/counts';
+import {signOut} from '_actions/authentification';
 
 class HomeScreen extends Component {
   componentDidMount() {
@@ -25,13 +26,11 @@ class HomeScreen extends Component {
       <SafeAreaView>
         <Text>Screen: Home</Text>
 
-        <TouchableHighlight onPress={() => this.navigation.navigate('Login')}>
-          <Text>Go to Login</Text>
-        </TouchableHighlight>
-
         <Button title="increment" onPress={() => this.incrementCount()} />
         <Text>{this.props.count}</Text>
         <Button title="decrement" onPress={() => this.decrementCount()} />
+
+        <Button title="Logout" onPress={() => this.props.signOut()} />
       </SafeAreaView>
     );
   }
@@ -40,12 +39,14 @@ class HomeScreen extends Component {
 const mapStateToProps = (state) => {
   return {
     count: state.test.count,
+    user: state.user,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     changeCount: (count) => dispatch(changeCount(count)),
+    signOut: () => dispatch(signOut()),
   };
 };
 
