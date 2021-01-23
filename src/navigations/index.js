@@ -1,10 +1,10 @@
 import React from 'react';
-import AuthNavigator from './auth_navigator';
-import AppNavigator from './app_navigator';
 import {NavigationContainer} from '@react-navigation/native';
-import Splash from '_scenes/splash';
 import {connect} from 'react-redux';
 import {restoreToken, signIn} from '_actions/authentification';
+import AuthNavigator from './auth_navigator';
+import AppNavigator from './app_navigator';
+import Splash from '_scenes/splash';
 
 function RootNavigator(props) {
   if (props.user.isLoading) {
