@@ -1,27 +1,39 @@
 import {RESTORE_TOKEN, SIGN_IN, SIGN_OUT} from '_constants';
+import axios from 'axios';
+import qs from 'qs';
+import {routes} from '_routes';
 import {getUserData, setUserData, clearUserData} from '_actions/user_storage';
 
 export const restoreUserData = () => {
   return async (dispatch) => {
-    const userData = await getUserData();
+    const user = await getUserData();
 
-    const payload = (data) => {
-      if (data?.userEmail && data?.userPassword) {
-        // query to api sign in with user data with setUserData(data)
-        return {
-          ...data,
-          isSignout: false,
-        };
-      } else {
-        return {
-          userToken: null,
-          userEmail: null,
-          userPassword: null,
-        };
-      }
-    };
-
-    dispatch(restoreToken(payload(userData)));
+    if (user?.email && user?.password) {
+      axios({
+        method: 'post',
+        url: routes.authentification.create(),
+        data: qs.stringify({
+          user: {
+            email: user.email,
+            password: user.password,
+          },
+        }),
+      })
+        .then((response) => {
+          dispatch(
+            restoreToken({
+              ...response.data.user,
+              isSignout: false,
+            }),
+          );
+        })
+        .catch((error) => {
+          console.log('error', error);
+          dispatch(restoreToken({}));
+        });
+    } else {
+      dispatch(restoreToken({}));
+    }
   };
 };
 

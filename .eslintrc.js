@@ -17,6 +17,7 @@ module.exports = {
           _store: './src/store',
           _styles: './src/styles',
           _utils: './src/utils',
+          _routes: './src/routes',
         },
       },
     },

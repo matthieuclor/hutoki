@@ -3,9 +3,17 @@ import {RESTORE_TOKEN, SIGN_IN, SIGN_OUT} from '_constants';
 const initialState = {
   isLoading: true,
   isSignout: true,
-  userToken: null,
-  userEmail: null,
-  userPassword: null,
+  authToken: null,
+  email: null,
+  firstName: null,
+  lastName: null,
+  phone: null,
+  address: null,
+  plan: null,
+  planDeadline: null,
+  currentFamilyId: null,
+  currentSchoolHolidayZones: null,
+  currentVenueId: null,
 };
 
 const authReducer = (state = initialState, action) => {

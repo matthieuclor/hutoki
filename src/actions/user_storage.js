@@ -1,9 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const test = {
-  userToken: 'test',
-  userEmail: 'matthieuclor@gail.com',
-  userPassword: 'password',
+  email: 'matthieuclor@gmail.com',
+  password: 'immo8802',
 };
 
 export const getUserData = async () => {

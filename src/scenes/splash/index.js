@@ -7,7 +7,6 @@ class Splash extends Component {
   constructor(props) {
     super(props);
     this.props.restoreUserData();
-    console.log(this.props);
   }
 
   render() {
