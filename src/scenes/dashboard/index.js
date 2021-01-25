@@ -3,15 +3,15 @@ import {SafeAreaView, Text, Button} from 'react-native';
 import {connect} from 'react-redux';
 import {signOut} from '_actions/authentification';
 
-class HomeScreen extends Component {
+class Dashboard extends Component {
   componentDidMount() {
-    console.log('Home mouned');
+    console.log('Dashboard mouned');
   }
 
   render() {
     return (
       <SafeAreaView>
-        <Text>Screen: Home</Text>
+        <Text>Screen: Dashboard</Text>
         <Button title="Logout" onPress={() => this.props.signOut()} />
       </SafeAreaView>
     );
@@ -30,4 +30,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

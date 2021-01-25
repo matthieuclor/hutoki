@@ -7,23 +7,27 @@ export const scaleSize = (size) => (WINDOW_WIDTH / guidelineBaseWidth) * size;
 
 export const scaleFont = (size) => size * PixelRatio.getFontScale();
 
-function dimensions(top, right = top, bottom = top, left = right, property) {
+function dimensions({t, r, b, l}, property) {
   let styles = {};
 
-  styles[`${property}Top`] = top;
-  styles[`${property}Right`] = right;
-  styles[`${property}Bottom`] = bottom;
-  styles[`${property}Left`] = left;
+  styles[`${property}Top`] = t;
+  styles[`${property}Right`] = r;
+  styles[`${property}Bottom`] = b;
+  styles[`${property}Left`] = l;
 
   return styles;
 }
 
-export function margin(top, right, bottom, left) {
-  return dimensions(top, right, bottom, left, 'margin');
+export function margin({t = 0, r = 0, b = 0, l = 0, x, y}) {
+  x ? (l = r = x) : null;
+  y ? (t = b = y) : null;
+  return dimensions({t, r, b, l}, 'margin');
 }
 
-export function padding(top, right, bottom, left) {
-  return dimensions(top, right, bottom, left, 'padding');
+export function padding({t = 0, r = 0, b = 0, l = 0, x, y}) {
+  x ? (l = r = x) : null;
+  y ? (t = b = y) : null;
+  return dimensions({t, r, b, l}, 'padding');
 }
 
 export function boxShadow(

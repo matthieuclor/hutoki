@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
-import {SUCCESS, GRAY_MEDIUM} from '_styles/colors';
+import {btnSuccess, btnTextColor, formContainer, inputText} from '_styles/form';
+import {logo100} from '_styles/logo';
+import {margin} from '_styles/mixins';
 import {connect} from 'react-redux';
 import {authenticateUser} from '_actions/authentification';
 import {
-  SafeAreaView,
+  KeyboardAvoidingView,
   TouchableOpacity,
   TextInput,
   Image,
   Text,
   StyleSheet,
   View,
+  Platform,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -17,32 +20,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  logo: {
-    width: 100,
-    height: 100,
-    marginBottom: 50,
-  },
-  input: {
-    height: 40,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: GRAY_MEDIUM,
-    borderRadius: 5,
-    marginBottom: 20,
-  },
-  button: {
-    alignItems: 'center',
-    backgroundColor: SUCCESS,
-    borderRadius: 5,
-    padding: 10,
-  },
-  text: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
-  formContainer: {
-    width: '80%',
   },
 });
 
@@ -58,13 +35,15 @@ class LoginScreen extends Component {
 
   render() {
     return (
-      <SafeAreaView style={styles.container}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.container}>
         <Image
-          style={styles.logo}
+          style={[logo100, margin({b: 50})]}
           source={require('_assets/images/hutoki-square.png')}
         />
 
-        <View style={styles.formContainer}>
+        <View style={formContainer}>
           <TextInput
             autoCapitalize="none"
             autoCorrect={false}
@@ -73,7 +52,7 @@ class LoginScreen extends Component {
             placeholder="Email"
             value={this.state.email}
             onChangeText={(email) => this.setState({email})}
-            style={styles.input}
+            style={inputText}
           />
 
           <TextInput
@@ -82,18 +61,18 @@ class LoginScreen extends Component {
             onChangeText={(password) => this.setState({password})}
             placeholder="Mot de passe"
             secureTextEntry={true}
-            style={styles.input}
+            style={inputText}
           />
 
           <TouchableOpacity
-            style={styles.button}
+            style={btnSuccess}
             onPress={() => {
               this.props.authenticateUser(this.state);
             }}>
-            <Text style={styles.text}>Se connecter</Text>
+            <Text style={btnTextColor}>Se connecter</Text>
           </TouchableOpacity>
         </View>
-      </SafeAreaView>
+      </KeyboardAvoidingView>
     );
   }
 }
