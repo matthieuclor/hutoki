@@ -1,14 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const test = {
-  email: 'matthieuclor@gmail.com',
-  password: 'immo8802',
-};
-
 export const getUserData = async () => {
   try {
     const jsonValue = await AsyncStorage.getItem('@userData');
-    return jsonValue != null ? JSON.parse(jsonValue) : test;
+    return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch (e) {
     console.log('AsyncStorage getUserData error', e);
   }
@@ -16,9 +11,9 @@ export const getUserData = async () => {
 
 export const setUserData = async (data) => {
   try {
-    await AsyncStorage.setItem('@userData', data);
+    await AsyncStorage.setItem('@userData', JSON.stringify(data));
   } catch (e) {
-    console.log('AsyncStorage updateUserData error', e);
+    console.log('AsyncStorage setUserData error', e);
   }
 };
 

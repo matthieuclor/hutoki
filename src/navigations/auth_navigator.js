@@ -8,12 +8,9 @@ const AuthNavigator = (isSignout) => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Login"
+        name="Espace utilisateur"
         component={Login}
-        options={{
-          title: 'Login',
-          animationTypeForReplace: isSignout ? 'pop' : 'push',
-        }}
+        options={{animationTypeForReplace: isSignout ? 'pop' : 'push'}}
       />
     </Stack.Navigator>
   );

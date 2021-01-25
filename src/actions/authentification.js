@@ -4,43 +4,65 @@ import qs from 'qs';
 import {routes} from '_routes';
 import {getUserData, setUserData, clearUserData} from '_actions/user_storage';
 
+const authentification = async (user) => {
+  if (user?.email && user?.password) {
+    return axios({
+      method: 'post',
+      url: routes.authentification.create(),
+      data: qs.stringify({
+        user: {
+          email: user.email,
+          password: user.password,
+        },
+      }),
+    });
+  } else {
+    throw new Error('email or password missing');
+  }
+};
+
 export const restoreUserData = () => {
   return async (dispatch) => {
     const user = await getUserData();
 
-    if (user?.email && user?.password) {
-      axios({
-        method: 'post',
-        url: routes.authentification.create(),
-        data: qs.stringify({
-          user: {
-            email: user.email,
-            password: user.password,
-          },
-        }),
+    authentification(user)
+      .then((response) => {
+        dispatch(
+          restoreToken({
+            ...response.data.user,
+            isSignout: false,
+          }),
+        );
       })
-        .then((response) => {
-          dispatch(
-            restoreToken({
-              ...response.data.user,
-              isSignout: false,
-            }),
-          );
-        })
-        .catch((error) => {
-          console.log('error', error);
-          dispatch(restoreToken({}));
-        });
-    } else {
-      dispatch(restoreToken({}));
-    }
+      .catch((error) => {
+        console.log('error restoreUserData', error);
+        dispatch(restoreToken({}));
+      });
   };
 };
 
-export const signIn = (data) => {
+export const authenticateUser = (user) => {
+  return async (dispatch) => {
+    authentification(user)
+      .then((response) => {
+        dispatch(
+          signIn({
+            ...response.data.user,
+            isSignout: false,
+          }),
+          setUserData(user),
+        );
+      })
+      .catch((error) => {
+        console.log('error authenticateUser', error);
+      });
+  };
+};
+
+const signIn = (payload) => {
   return {
     type: SIGN_IN,
-    payload: setUserData(data),
+    payload: payload,
   };
 };
 
@@ -51,7 +73,7 @@ export const signOut = () => {
   };
 };
 
-export const restoreToken = (payload) => {
+const restoreToken = (payload) => {
   return {
     type: RESTORE_TOKEN,
     payload: payload,

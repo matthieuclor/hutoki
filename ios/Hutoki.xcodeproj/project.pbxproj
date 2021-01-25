@@ -161,7 +161,6 @@
 				C43EAF2416895D2744AB65F6 /* Pods-Hutoki-tvOSTests.debug.xcconfig */,
 				735FE7A3B8370A35A1377D87 /* Pods-Hutoki-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

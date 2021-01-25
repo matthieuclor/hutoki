@@ -1,11 +1,5 @@
 import React, {Component} from 'react';
-import {
-  View,
-  Image,
-  ActivityIndicator,
-  StatusBar,
-  StyleSheet,
-} from 'react-native';
+import {View, Image, ActivityIndicator, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import {restoreUserData, signIn} from '_actions/authentification';
 
@@ -31,8 +25,6 @@ class Splash extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar barStyle="default" />
-
         <Image
           style={styles.logo}
           source={require('_assets/images/hutoki-square.png')}

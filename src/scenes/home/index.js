@@ -6,7 +6,6 @@ import {signOut} from '_actions/authentification';
 class HomeScreen extends Component {
   componentDidMount() {
     console.log('Home mouned');
-    console.log(this.props.user);
   }
 
   render() {
