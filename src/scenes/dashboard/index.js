@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
-import {SafeAreaView, Text, Button} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import {connect} from 'react-redux';
-import {signOut} from '_actions/authentification';
+import FamiliesSelector from '_components/families_selector';
 
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     console.log('Dashboard mouned');
   }
@@ -11,8 +15,7 @@ class Dashboard extends Component {
   render() {
     return (
       <SafeAreaView>
-        <Text>Screen: Dashboard</Text>
-        <Button title="Logout" onPress={() => this.props.signOut()} />
+        <FamiliesSelector />
       </SafeAreaView>
     );
   }

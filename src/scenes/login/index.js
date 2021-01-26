@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {btnSuccess, btnTextColor, formContainer, inputText} from '_styles/form';
-import {logo100} from '_styles/logo';
+import {formContainer, inputText} from '_styles/components/form';
+import {btnSuccess, btnMd, btnTextColor} from '_styles/components/button';
+import {image100} from '_styles/components/image';
 import {margin} from '_styles/mixins';
 import {connect} from 'react-redux';
 import {authenticateUser} from '_actions/authentification';
@@ -13,6 +14,8 @@ import {
   StyleSheet,
   View,
   Platform,
+  Button,
+  Linking,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -39,7 +42,7 @@ class LoginScreen extends Component {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.container}>
         <Image
-          style={[logo100, margin({b: 50})]}
+          style={[image100, margin({b: 50})]}
           source={require('_assets/images/hutoki-square.png')}
         />
 
@@ -65,12 +68,19 @@ class LoginScreen extends Component {
           />
 
           <TouchableOpacity
-            style={btnSuccess}
+            style={[btnSuccess, btnMd, margin({b: 30})]}
             onPress={() => {
               this.props.authenticateUser(this.state);
             }}>
             <Text style={btnTextColor}>Se connecter</Text>
           </TouchableOpacity>
+
+          <Button
+            title="Créer un compte"
+            onPress={() => {
+              Linking.openURL('https://www.hutoki.com/pricing');
+            }}
+          />
         </View>
       </KeyboardAvoidingView>
     );

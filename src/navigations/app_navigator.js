@@ -33,11 +33,11 @@ const AppNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Réservation"
+        name="Membres"
         component={Members}
         options={{
           tabBarIcon: ({color}) => (
-            <Icon name="calendar-plus-o" size={25} color={color} />
+            <Icon name="users" size={25} color={color} />
           ),
         }}
       />
