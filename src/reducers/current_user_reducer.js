@@ -1,6 +1,7 @@
 import {UPDATE_CURRENT_USER} from '_constants';
 
 const initialState = {
+  id: null,
   email: null,
   firstName: null,
   lastName: null,

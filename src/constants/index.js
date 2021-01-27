@@ -9,3 +9,6 @@ export const UPDATE_CURRENT_USER = 'UPDATE_CURRENT_USER';
 
 // Families constants
 export const UPDATE_FAMILIES = 'UPDATE_FAMILIES';
+
+// Venues constants
+export const UPDATE_VENUES = 'UPDATE_VENUES';

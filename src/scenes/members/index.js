@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {SafeAreaView, Text} from 'react-native';
 import {connect} from 'react-redux';
+import {SafeAreaView, Text} from 'react-native';
+import FamiliesSelector from '_components/families_selector';
 
 class Members extends Component {
   componentDidMount() {
@@ -10,6 +11,7 @@ class Members extends Component {
   render() {
     return (
       <SafeAreaView>
+        <FamiliesSelector />
         <Text>Screen: Members</Text>
       </SafeAreaView>
     );

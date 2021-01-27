@@ -1,73 +1,31 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getFamilies} from '_actions/families';
+import {updateCurrentFamily} from '_actions/current_family';
 import {btnInfo, btnSm, btnTextColor} from '_styles/components/button';
 import {picker} from '_styles/components/form';
 import {modalView, modalText} from '_styles/components/modal';
 import {margin, padding} from '_styles/mixins';
-import {PRIMARY} from '_styles/colors';
 import {Picker} from '@react-native-picker/picker';
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  Dimensions,
-  Modal,
-} from 'react-native';
-
-const styles = StyleSheet.create({
-  constainer: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-  appLogo: {
-    width: 50,
-    height: 50,
-    marginRight: 10,
-  },
-  appText: {
-    color: PRIMARY,
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  appBlock: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: 150,
-    height: 50,
-  },
-  selectBlock: {
-    flexDirection: 'row',
-    width: Dimensions.get('window').width - 150,
-    height: 50,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  selectText: {
-    fontSize: 15,
-    fontWeight: 'bold',
-  },
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
+import {Text, View, Image, TouchableOpacity, Modal, Button} from 'react-native';
+import styles from '_components/families_selector/styles';
 
 class FamiliesSelector extends Component {
   constructor(props) {
     super(props);
-    this.props.getFamilies();
     this.state = {
       modalVisible: false,
     };
   }
 
+  findCurrentFamily() {
+    return this.props.families.find(
+      (family) => family.id === this.props.currentUser.currentFamilyId,
+    );
+  }
+
   render() {
     return (
-      <View>
+      <View style={styles.pageContainer}>
         <View style={styles.constainer}>
           <View style={styles.appBlock}>
             <Image
@@ -83,7 +41,12 @@ class FamiliesSelector extends Component {
               onPress={() => {
                 this.setState({modalVisible: true});
               }}>
-              <Text style={btnTextColor}>Clor</Text>
+              <Text
+                numberOfLines={1}
+                ellipsizeMode="tail"
+                style={[btnTextColor, styles.btnText]}>
+                {this.findCurrentFamily()?.name}
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -95,25 +58,27 @@ class FamiliesSelector extends Component {
           <View style={styles.centeredView}>
             <View style={[modalView, padding({t: 20, x: 20})]}>
               <Text style={modalText}>Selectionez une famille</Text>
-              <View>
-                <Picker
-                  selectedValue={this.props.currentUser.currentFamilyId}
-                  style={picker}
-                  onValueChange={(itemValue, itemIndex) => {
-                    this.setState({language: itemValue});
-                    this.setState({modalVisible: false});
-                  }}>
-                  {this.props.families.map((family) => {
-                    return (
-                      <Picker.Item
-                        key={family.id}
-                        label={family.name}
-                        value={family.id}
-                      />
-                    );
-                  })}
-                </Picker>
-              </View>
+              <Picker
+                selectedValue={this.props.currentUser.currentFamilyId}
+                style={picker}
+                onValueChange={(itemValue, itemIndex) => {
+                  this.props.updateCurrentFamily(itemValue);
+                  this.setState({modalVisible: false});
+                }}>
+                {this.props.families.map((family) => {
+                  return (
+                    <Picker.Item
+                      key={family.id}
+                      label={family.name}
+                      value={family.id}
+                    />
+                  );
+                })}
+              </Picker>
+              <Button
+                onPress={() => this.setState({modalVisible: false})}
+                title="Fermer"
+              />
             </View>
           </View>
         </Modal>
@@ -131,7 +96,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getFamilies: () => dispatch(getFamilies()),
+    updateCurrentFamily: (currentFamilyId) =>
+      dispatch(updateCurrentFamily(currentFamilyId)),
   };
 };
 

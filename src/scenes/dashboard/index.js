@@ -1,7 +1,19 @@
 import React, {Component} from 'react';
-import {SafeAreaView} from 'react-native';
 import {connect} from 'react-redux';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
 import FamiliesSelector from '_components/families_selector';
+import VenuesSelector from '_components/venues_selector';
+
+const styles = StyleSheet.create({
+  pageComponent: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  test: {
+    flex: 1,
+    // backgroundColor: 'blue',
+  },
+});
 
 class Dashboard extends Component {
   constructor(props) {
@@ -14,8 +26,10 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <SafeAreaView>
+      <SafeAreaView style={styles.pageComponent}>
         <FamiliesSelector />
+        <View style={styles.test} />
+        <VenuesSelector />
       </SafeAreaView>
     );
   }
