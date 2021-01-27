@@ -1,10 +1,12 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-import authReducer from '_reducers/auth_reducer';
+import authentificationReducer from '_reducers/authentification_reducer';
+import currentUserReducer from '_reducers/current_user_reducer';
 import familiesReducer from '_reducers/families_reducer';
 
 const rootReducer = combineReducers({
-  user: authReducer,
+  authentification: authentificationReducer,
+  currentUser: currentUserReducer,
   families: familiesReducer,
 });
 

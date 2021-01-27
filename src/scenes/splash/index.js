@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {View, Image, ActivityIndicator, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
-import {restoreUserData, signIn} from '_actions/authentification';
+import {restoreUserData} from '_actions/authentification';
+import {View, Image, ActivityIndicator, StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -37,15 +37,12 @@ class Splash extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    user: state.user,
-  };
+  return {};
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     restoreUserData: () => dispatch(restoreUserData()),
-    signIn: (data) => dispatch(signIn(data)),
   };
 };
 

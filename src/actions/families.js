@@ -7,7 +7,7 @@ export const getFamilies = () => {
     axios({
       method: 'get',
       url: routes.families.index(),
-      headers: {Authorization: getState().user.authToken},
+      headers: {Authorization: getState().authentification.token},
     })
       .then((response) => dispatch(updateFamilies(response.data.families)))
       .catch((error) => console.log('error getFamilies', error));

@@ -1,22 +1,21 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {connect} from 'react-redux';
-import {restoreToken, signIn} from '_actions/authentification';
 import AuthNavigator from './auth_navigator';
 import AppNavigator from './app_navigator';
 import Splash from '_scenes/splash';
 
 function RootNavigator(props) {
-  if (props.user.isLoading) {
+  if (props.authentification.isLoading) {
     return <Splash />;
   }
 
   return (
     <NavigationContainer>
-      {props.user.isSignout ? (
+      {props.authentification.isSignout ? (
         <AuthNavigator />
       ) : (
-        <AppNavigator isSignout={props.user.isSignout} />
+        <AppNavigator isSignout={props.authentification.isSignout} />
       )}
     </NavigationContainer>
   );
@@ -24,15 +23,12 @@ function RootNavigator(props) {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
+    authentification: state.authentification,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    restoreToken: () => dispatch(restoreToken()),
-    signIn: (data) => dispatch(signIn(data)),
-  };
+  return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RootNavigator);

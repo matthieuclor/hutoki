@@ -97,7 +97,7 @@ class FamiliesSelector extends Component {
               <Text style={modalText}>Selectionez une famille</Text>
               <View>
                 <Picker
-                  selectedValue={this.props.user.currentFamilyId}
+                  selectedValue={this.props.currentUser.currentFamilyId}
                   style={picker}
                   onValueChange={(itemValue, itemIndex) => {
                     this.setState({language: itemValue});
@@ -124,7 +124,7 @@ class FamiliesSelector extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
+    currentUser: state.currentUser,
     families: state.families,
   };
 };

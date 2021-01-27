@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {authenticateUser} from '_actions/authentification';
 import {formContainer, inputText} from '_styles/components/form';
 import {btnSuccess, btnMd, btnTextColor} from '_styles/components/button';
 import {image100} from '_styles/components/image';
 import {margin} from '_styles/mixins';
-import {connect} from 'react-redux';
-import {authenticateUser} from '_actions/authentification';
 import {
   KeyboardAvoidingView,
   TouchableOpacity,

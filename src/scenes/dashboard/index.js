@@ -23,14 +23,12 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
+    currentUser: state.currentUser,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    signOut: () => dispatch(signOut()),
-  };
+  return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

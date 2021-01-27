@@ -3,6 +3,7 @@ import axios from 'axios';
 import qs from 'qs';
 import {routes} from '_routes';
 import {getUserData, setUserData, clearUserData} from '_actions/user_storage';
+import {updateCurrentUser} from '_actions/current_user';
 
 const authentification = async (user) => {
   if (user?.email && user?.password) {
@@ -27,16 +28,12 @@ export const restoreUserData = () => {
 
     authentification(user)
       .then((response) => {
-        dispatch(
-          restoreToken({
-            ...response.data.user,
-            isSignout: false,
-          }),
-        );
+        dispatch(restoreToken({token: response.data.token, isSignout: false}));
+        dispatch(updateCurrentUser(response.data.user));
       })
       .catch((error) => {
-        console.log('error restoreUserData', error);
         dispatch(restoreToken({}));
+        console.log('error restoreUserData', error);
       });
   };
 };
@@ -45,13 +42,10 @@ export const authenticateUser = (user) => {
   return async (dispatch) => {
     authentification(user)
       .then((response) => {
-        dispatch(
-          signIn({
-            ...response.data.user,
-            isSignout: false,
-          }),
-          setUserData(user),
-        );
+        setUserData(user).then(() => {
+          dispatch(signIn({token: response.data.token, isSignout: false}));
+          dispatch(updateCurrentUser(response.data.user));
+        });
       })
       .catch((error) => {
         console.log('error authenticateUser', error);

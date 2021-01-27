@@ -3,20 +3,10 @@ import {RESTORE_TOKEN, SIGN_IN, SIGN_OUT} from '_constants';
 const initialState = {
   isLoading: true,
   isSignout: true,
-  authToken: null,
-  email: null,
-  firstName: null,
-  lastName: null,
-  phone: null,
-  address: null,
-  plan: null,
-  planDeadline: null,
-  currentFamilyId: null,
-  currentSchoolHolidayZones: null,
-  currentVenueId: null,
+  token: null,
 };
 
-const authReducer = (state = initialState, action) => {
+const authentificationReducer = (state = initialState, action) => {
   switch (action.type) {
     case RESTORE_TOKEN:
       return {
@@ -27,13 +17,13 @@ const authReducer = (state = initialState, action) => {
     case SIGN_IN:
       return {
         ...state,
-        userToken: action.payload,
+        ...action.payload,
         isSignout: false,
       };
     case SIGN_OUT:
       return {
         ...state,
-        userToken: null,
+        token: null,
         isSignout: true,
       };
     default:
@@ -41,4 +31,4 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-export default authReducer;
+export default authentificationReducer;
