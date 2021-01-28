@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
   withoutImage: {
     width: 100,
     height: 100,
-    // flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },

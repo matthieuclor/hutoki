@@ -7,6 +7,9 @@ export const routes = {
   currentFamily: {
     update: () => `${basUrl}/api/current_families`,
   },
+  currentVenue: {
+    update: () => `${basUrl}/api/current_venues`,
+  },
   families: {
     index: () => `${basUrl}/api/families`,
   },
