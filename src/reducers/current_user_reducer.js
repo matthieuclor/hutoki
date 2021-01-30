@@ -9,9 +9,7 @@ const initialState = {
   address: null,
   plan: null,
   planDeadline: null,
-  currentFamilyId: null,
   currentSchoolHolidayZones: null,
-  currentVenueId: null,
 };
 
 const currentUserReducer = (state = initialState, action) => {

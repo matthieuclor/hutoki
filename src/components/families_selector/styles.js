@@ -1,11 +1,14 @@
 import {StyleSheet, Dimensions} from 'react-native';
-import {PRIMARY} from '_styles/colors';
+import {PRIMARY, WHITE, GRAY_LIGHT} from '_styles/colors';
 
 const styles = StyleSheet.create({
   pageContainer: {
     flex: 1,
     flexDirection: 'column',
     maxHeight: 50,
+    backgroundColor: WHITE,
+    borderBottomColor: GRAY_LIGHT,
+    borderBottomWidth: 1,
   },
   constainer: {
     flex: 1,

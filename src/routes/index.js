@@ -16,4 +16,7 @@ export const routes = {
   venues: {
     index: () => `${basUrl}/api/venues`,
   },
+  yearBookings: {
+    index: (year) => `${basUrl}/api/bookings/range?year=${year}`,
+  },
 };

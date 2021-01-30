@@ -4,6 +4,8 @@ import qs from 'qs';
 import {routes} from '_routes';
 import {getUserData, setUserData, clearUserData} from '_actions/user_storage';
 import {updateCurrentUser} from '_actions/current_user';
+import {updateCurrentFamily} from '_actions/current_family';
+import {updateCurrentVenue} from '_actions/current_venue';
 
 const authentification = async (user) => {
   if (user?.email && user?.password) {
@@ -30,6 +32,8 @@ export const restoreUserData = () => {
       .then((response) => {
         dispatch(restoreToken({token: response.data.token, isSignout: false}));
         dispatch(updateCurrentUser(response.data.user));
+        dispatch(updateCurrentFamily(response.data.family));
+        dispatch(updateCurrentVenue(response.data.venue));
       })
       .catch((error) => {
         dispatch(restoreToken({}));
@@ -45,6 +49,8 @@ export const authenticateUser = (user) => {
         setUserData(user).then(() => {
           dispatch(signIn({token: response.data.token, isSignout: false}));
           dispatch(updateCurrentUser(response.data.user));
+          dispatch(updateCurrentFamily(response.data.family));
+          dispatch(updateCurrentVenue(response.data.venue));
         });
       })
       .catch((error) => {

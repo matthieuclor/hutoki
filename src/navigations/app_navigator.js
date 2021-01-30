@@ -19,11 +19,8 @@ class AppNavigator extends Component {
     this.props.getFamilies();
   }
 
-  componentDidUpdate(prevProps) {
-    if (
-      this.props.currentUser.currentFamilyId !==
-      prevProps.currentUser.currentFamilyId
-    ) {
+  componentDidUpdate({currentFamily}) {
+    if (this.props.currentFamily !== currentFamily) {
       this.props.getVenues();
     }
   }
@@ -87,6 +84,7 @@ class AppNavigator extends Component {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.currentUser,
+    currentFamily: state.currentFamily,
   };
 };
 

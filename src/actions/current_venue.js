@@ -1,9 +1,9 @@
-import {updateCurrentUser} from '_actions/current_user';
+import {UPDATE_CURRENT_VENUE} from '_constants';
 import axios from 'axios';
 import qs from 'qs';
 import {routes} from '_routes';
 
-export const updateCurrentVenue = (currentVenueId) => {
+export const setCurrentVenue = (currentVenueId) => {
   return (dispatch, getState) => {
     axios({
       method: 'put',
@@ -15,7 +15,14 @@ export const updateCurrentVenue = (currentVenueId) => {
       }),
       headers: {Authorization: getState().authentification.token},
     })
-      .then((response) => dispatch(updateCurrentUser(response.data.user)))
+      .then((response) => dispatch(updateCurrentVenue(response.data.venue)))
       .catch((error) => console.log('error updateCurrentVenue', error));
+  };
+};
+
+export const updateCurrentVenue = (payload) => {
+  return {
+    type: UPDATE_CURRENT_VENUE,
+    payload: payload,
   };
 };

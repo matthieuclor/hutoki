@@ -1,9 +1,9 @@
-import {updateCurrentUser} from '_actions/current_user';
+import {UPDATE_CURRENT_FAMILY} from '_constants';
 import axios from 'axios';
 import qs from 'qs';
 import {routes} from '_routes';
 
-export const updateCurrentFamily = (currentFamilyId) => {
+export const getCurrentFamily = (currentFamilyId) => {
   return (dispatch, getState) => {
     axios({
       method: 'put',
@@ -15,7 +15,16 @@ export const updateCurrentFamily = (currentFamilyId) => {
       }),
       headers: {Authorization: getState().authentification.token},
     })
-      .then((response) => dispatch(updateCurrentUser(response.data.user)))
+      .then((response) => {
+        dispatch(updateCurrentFamily(response.data.family));
+      })
       .catch((error) => console.log('error updateCurrentFamily', error));
+  };
+};
+
+export const updateCurrentFamily = (payload) => {
+  return {
+    type: UPDATE_CURRENT_FAMILY,
+    payload: payload,
   };
 };

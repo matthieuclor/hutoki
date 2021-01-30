@@ -18,6 +18,7 @@ module.exports = {
           _styles: './src/styles',
           _utils: './src/utils',
           _routes: './src/routes',
+          _locals: './src/locals',
         },
       },
     },

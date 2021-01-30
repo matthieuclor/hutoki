@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {updateCurrentFamily} from '_actions/current_family';
+import {getCurrentFamily} from '_actions/current_family';
 import {btnInfo, btnSm, btnTextColor} from '_styles/components/button';
 import {picker} from '_styles/components/form';
 import {modalView, modalText} from '_styles/components/modal';
@@ -19,7 +19,7 @@ class FamiliesSelector extends Component {
 
   findCurrentFamily() {
     return this.props.families.find(
-      (family) => family.id === this.props.currentUser.currentFamilyId,
+      (family) => family.id === this.props.currentFamily.id,
     );
   }
 
@@ -59,10 +59,10 @@ class FamiliesSelector extends Component {
             <View style={[modalView, padding({t: 20, x: 20})]}>
               <Text style={modalText}>Selectionez une famille</Text>
               <Picker
-                selectedValue={this.props.currentUser.currentFamilyId}
+                selectedValue={this.props.currentFamily.id}
                 style={picker}
                 onValueChange={(itemValue, itemIndex) => {
-                  this.props.updateCurrentFamily(itemValue);
+                  this.props.getCurrentFamily(itemValue);
                   this.setState({modalVisible: false});
                 }}>
                 {this.props.families.map((family) => {
@@ -90,14 +90,15 @@ class FamiliesSelector extends Component {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.currentUser,
+    currentFamily: state.currentFamily,
     families: state.families,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateCurrentFamily: (currentFamilyId) =>
-      dispatch(updateCurrentFamily(currentFamilyId)),
+    getCurrentFamily: (currentFamilyId) =>
+      dispatch(getCurrentFamily(currentFamilyId)),
   };
 };
 

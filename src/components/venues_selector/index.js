@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {updateCurrentVenue} from '_actions/current_venue';
+import {setCurrentVenue} from '_actions/current_venue';
+import {removeYearBookings} from '_actions/year_bookings';
+import {removeKnownYearsBookings} from '_actions/known_years_bookings';
 import {View, FlatList, Dimensions} from 'react-native';
 import VenueCarouselItem from '_components/venue_carousel_item';
 import styles from '_components/venues_selector/styles';
@@ -24,24 +26,17 @@ class VenuesSelector extends Component {
   onViewableItemsChanged = ({viewableItems}) => {
     if (
       viewableItems[0] &&
-      viewableItems[0].item.id !== this.getCurrentVenueId()
+      viewableItems[0].item.id !== parseInt(this.props.currentVenue.id, 10)
     ) {
-      this.props.updateCurrentVenue(viewableItems[0].item.id);
+      this.props.setCurrentVenue(viewableItems[0].item.id);
+      this.props.removeYearBookings();
+      this.props.removeKnownYearsBookings();
     }
   };
 
-  getCurrentVenueId() {
-    return parseInt(
-      this.props.currentUser.currentVenueId[
-        this.props.currentUser.currentFamilyId
-      ],
-      10,
-    );
-  }
-
   getIndexOfCurrentVenue() {
     return this.props.venues.findIndex(
-      (venue) => venue.id === this.getCurrentVenueId(),
+      (venue) => venue.id === parseInt(this.props.currentVenue.id, 10),
     );
   }
 
@@ -73,14 +68,17 @@ class VenuesSelector extends Component {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.currentUser,
+    currentVenue: state.currentVenue,
     venues: state.venues,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateCurrentVenue: (currentVenueId) =>
-      dispatch(updateCurrentVenue(currentVenueId)),
+    setCurrentVenue: (currentVenueId) =>
+      dispatch(setCurrentVenue(currentVenueId)),
+    removeYearBookings: () => dispatch(removeYearBookings()),
+    removeKnownYearsBookings: () => dispatch(removeKnownYearsBookings()),
   };
 };
 
