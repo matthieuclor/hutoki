@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {setCurrentVenue} from '_actions/current_venue';
-import {removeYearBookings} from '_actions/year_bookings';
-import {removeKnownYearsBookings} from '_actions/known_years_bookings';
 import {View, FlatList, Dimensions} from 'react-native';
 import VenueCarouselItem from '_components/venue_carousel_item';
 import styles from '_components/venues_selector/styles';
@@ -29,16 +27,13 @@ class VenuesSelector extends Component {
       viewableItems[0].item.id !== parseInt(this.props.currentVenue.id, 10)
     ) {
       this.props.setCurrentVenue(viewableItems[0].item.id);
-      this.props.removeYearBookings();
-      this.props.removeKnownYearsBookings();
     }
   };
 
-  getIndexOfCurrentVenue() {
-    return this.props.venues.findIndex(
+  getIndexOfCurrentVenue = () =>
+    this.props.venues.findIndex(
       (venue) => venue.id === parseInt(this.props.currentVenue.id, 10),
     );
-  }
 
   render() {
     return (
@@ -67,7 +62,6 @@ class VenuesSelector extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.currentUser,
     currentVenue: state.currentVenue,
     venues: state.venues,
   };
@@ -77,8 +71,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setCurrentVenue: (currentVenueId) =>
       dispatch(setCurrentVenue(currentVenueId)),
-    removeYearBookings: () => dispatch(removeYearBookings()),
-    removeKnownYearsBookings: () => dispatch(removeKnownYearsBookings()),
   };
 };
 

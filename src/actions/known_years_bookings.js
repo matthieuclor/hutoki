@@ -10,8 +10,9 @@ export const updateKnownYearsBookings = (payload) => {
   };
 };
 
-export const removeKnownYearsBookings = () => {
+export const removeKnownYearsBookings = (payload) => {
   return {
     type: REMOVE_KNOWN_YEARS_BOOKINGS,
+    payload: payload,
   };
 };

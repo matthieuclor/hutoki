@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getCurrentFamily} from '_actions/current_family';
+import {setCurrentFamily} from '_actions/current_family';
 import {btnInfo, btnSm, btnTextColor} from '_styles/components/button';
 import {picker} from '_styles/components/form';
 import {modalView, modalText} from '_styles/components/modal';
@@ -62,7 +62,7 @@ class FamiliesSelector extends Component {
                 selectedValue={this.props.currentFamily.id}
                 style={picker}
                 onValueChange={(itemValue, itemIndex) => {
-                  this.props.getCurrentFamily(itemValue);
+                  this.props.setCurrentFamily(itemValue);
                   this.setState({modalVisible: false});
                 }}>
                 {this.props.families.map((family) => {
@@ -97,8 +97,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getCurrentFamily: (currentFamilyId) =>
-      dispatch(getCurrentFamily(currentFamilyId)),
+    setCurrentFamily: (currentFamilyId) =>
+      dispatch(setCurrentFamily(currentFamilyId)),
   };
 };
 

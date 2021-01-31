@@ -3,7 +3,7 @@ import axios from 'axios';
 import qs from 'qs';
 import {routes} from '_routes';
 
-export const getCurrentFamily = (currentFamilyId) => {
+export const setCurrentFamily = (currentFamilyId) => {
   return (dispatch, getState) => {
     axios({
       method: 'put',
