@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import moment from 'moment';
 import {getYearBookings} from '_actions/year_bookings';
 import {updateKnownYearsBookings} from '_actions/known_years_bookings';
 import {removeYearBookings} from '_actions/year_bookings';
@@ -21,6 +22,32 @@ class BookingsCalendar extends Component {
     this.calendarList = createRef();
   }
 
+  removeBookings = async () => {
+    await Promise.all(
+      this.props.removeYearBookings(),
+      this.props.removeKnownYearsBookings(),
+    );
+  };
+
+  getCurrentMonths = () => {
+    const currentMonth = this.calendarList.current.state.currentMonth.toString();
+    const firstDate = moment(currentMonth);
+    const lastDate = moment(currentMonth).add(3, 'months');
+
+    return [{year: firstDate.year()}, {year: lastDate.year()}];
+  };
+
+  componentDidUpdate({currentVenue}) {
+    if (
+      this.props.currentVenue !== currentVenue &&
+      this.calendarList.current.state.currentMonth
+    ) {
+      this.removeBookings().then(
+        this.checkForYearData(this.getCurrentMonths()),
+      );
+    }
+  }
+
   checkForYearData(months) {
     uniqBy(months, 'year').map((month) => {
       if (!this.props.knownYearsBookings.includes(month.year)) {
@@ -30,26 +57,12 @@ class BookingsCalendar extends Component {
     });
   }
 
-  removeBookings = async () => {
-    await this.props.removeYearBookings();
-    await this.props.removeKnownYearsBookings();
-  };
+  onDayPress(day) {
+    console.log('onDayPress', this.props.yearBookings[day.dateString]);
+  }
 
-  componentDidUpdate({currentVenue}) {
-    if (
-      this.props.currentVenue !== currentVenue &&
-      this.calendarList.current.state.currentMonth
-    ) {
-      this.removeBookings().then(
-        this.checkForYearData([
-          {
-            year: new Date(
-              this.calendarList.current.state.currentMonth,
-            ).getFullYear(),
-          },
-        ]),
-      );
-    }
+  onDayLongPress(day) {
+    console.log('onDayLongPress', this.props.yearBookings[day.dateString]);
   }
 
   render() {
@@ -57,9 +70,11 @@ class BookingsCalendar extends Component {
       <View style={styles.container}>
         <CalendarList
           ref={this.calendarList}
-          onVisibleMonthsChange={(months) => this.checkForYearData(months)}
-          firstDay={1}
+          onVisibleMonthsChange={this.checkForYearData.bind(this)}
+          onDayPress={this.onDayPress.bind(this)}
+          onDayLongPress={this.onDayLongPress.bind(this)}
           markedDates={this.props.yearBookings}
+          firstDay={1}
           markingType={'period'}
           pastScrollRange={24}
           futureScrollRange={12}
