@@ -58,11 +58,23 @@ class BookingsCalendar extends Component {
   }
 
   onDayPress(day) {
-    console.log('onDayPress', this.props.yearBookings[day.dateString]);
+    const booking = this.props.yearBookings[day.dateString];
+
+    if (!booking) {
+      return;
+    }
+
+    console.log('onDayPress', booking);
   }
 
   onDayLongPress(day) {
-    console.log('onDayLongPress', this.props.yearBookings[day.dateString]);
+    const booking = this.props.yearBookings[day.dateString];
+
+    if (!booking) {
+      return;
+    }
+
+    console.log('onDayLongPress', booking);
   }
 
   render() {
