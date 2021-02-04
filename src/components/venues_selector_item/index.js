@@ -3,9 +3,9 @@ import {View, Text, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {margin} from '_styles/mixins';
 import {GRAY_MEDIUM} from '_styles/colors';
-import styles from '_components/venue_carousel_item/styles';
+import styles from '_components/venues_selector_item/styles';
 
-class VenueCarouselItem extends Component {
+class VenuesSelectorItem extends Component {
   constructor(props) {
     super(props);
   }
@@ -49,4 +49,4 @@ class VenueCarouselItem extends Component {
   }
 }
 
-export default VenueCarouselItem;
+export default VenuesSelectorItem;

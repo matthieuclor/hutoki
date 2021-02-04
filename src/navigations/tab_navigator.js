@@ -13,14 +13,17 @@ import {PRIMARY} from '_styles/colors';
 
 const Tab = createBottomTabNavigator();
 
-class AppNavigator extends Component {
+class TabNavigator extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
     this.props.getFamilies();
   }
 
   componentDidUpdate({currentFamily}) {
-    if (this.props.currentFamily !== currentFamily) {
+    if (currentFamily && currentFamily !== this.props.currentFamily) {
       this.props.getVenues();
     }
   }
@@ -83,7 +86,6 @@ class AppNavigator extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.currentUser,
     currentFamily: state.currentFamily,
   };
 };
@@ -95,4 +97,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppNavigator);
+export default connect(mapStateToProps, mapDispatchToProps)(TabNavigator);

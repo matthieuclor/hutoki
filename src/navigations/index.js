@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 import {connect} from 'react-redux';
 import AuthNavigator from './auth_navigator';
-import AppNavigator from './app_navigator';
+import TabNavigator from './tab_navigator';
 import Splash from '_scenes/splash';
+
+const Stack = createStackNavigator();
 
 class RootNavigator extends Component {
   constructor(props) {
@@ -17,11 +20,13 @@ class RootNavigator extends Component {
 
     return (
       <NavigationContainer>
-        {this.props.authentification.isSignout ? (
-          <AuthNavigator />
-        ) : (
-          <AppNavigator isSignout={this.props.authentification.isSignout} />
-        )}
+        <Stack.Navigator>
+          {this.props.authentification.isSignout ? (
+            <Stack.Screen name="Auth" component={AuthNavigator} />
+          ) : (
+            <Stack.Screen name="Tab" component={TabNavigator} />
+          )}
+        </Stack.Navigator>
       </NavigationContainer>
     );
   }
