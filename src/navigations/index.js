@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import AuthNavigator from './auth_navigator';
 import TabNavigator from './tab_navigator';
 import Splash from '_scenes/splash';
+import Booking from '_scenes/booking';
 
 const Stack = createStackNavigator();
 
@@ -24,7 +25,21 @@ class RootNavigator extends Component {
           {this.props.authentification.isSignout ? (
             <Stack.Screen name="Auth" component={AuthNavigator} />
           ) : (
-            <Stack.Screen name="Tab" component={TabNavigator} />
+            <>
+              <Stack.Screen
+                name="Tab"
+                component={TabNavigator}
+                options={{headerShown: false}}
+              />
+              <Stack.Screen
+                name="Booking"
+                component={Booking}
+                options={({route}) => ({
+                  headerBackTitle: 'Retour',
+                  title: `Booking ${route.params.bookingId}`,
+                })}
+              />
+            </>
           )}
         </Stack.Navigator>
       </NavigationContainer>

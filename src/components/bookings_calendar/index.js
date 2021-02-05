@@ -22,6 +22,17 @@ class BookingsCalendar extends Component {
     this.calendarList = createRef();
   }
 
+  componentDidUpdate({currentVenue}) {
+    if (
+      this.props.currentVenue !== currentVenue &&
+      this.calendarList.current.state.currentMonth
+    ) {
+      this.removeBookings().then(
+        this.checkForYearData(this.getCurrentMonths()),
+      );
+    }
+  }
+
   removeBookings = async () => {
     await Promise.all(
       this.props.removeYearBookings(),
@@ -36,17 +47,6 @@ class BookingsCalendar extends Component {
 
     return [{year: firstDate.year()}, {year: lastDate.year()}];
   };
-
-  componentDidUpdate({currentVenue}) {
-    if (
-      this.props.currentVenue !== currentVenue &&
-      this.calendarList.current.state.currentMonth
-    ) {
-      this.removeBookings().then(
-        this.checkForYearData(this.getCurrentMonths()),
-      );
-    }
-  }
 
   checkForYearData(months) {
     uniqBy(months, 'year').map((month) => {
@@ -75,6 +75,7 @@ class BookingsCalendar extends Component {
     }
 
     console.log('onDayLongPress', booking);
+    this.props.navigation.navigate('Booking', {bookingId: booking.bookingId});
   }
 
   render() {

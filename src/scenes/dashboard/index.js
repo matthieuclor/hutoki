@@ -18,7 +18,7 @@ class Dashboard extends Component {
     return (
       <SafeAreaView style={styles.pageComponent}>
         <FamiliesSelector />
-        <BookingsCalendar />
+        <BookingsCalendar navigation={this.props.navigation} />
         <VenuesSelector />
       </SafeAreaView>
     );

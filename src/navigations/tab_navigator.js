@@ -30,10 +30,7 @@ class TabNavigator extends Component {
 
   render() {
     return (
-      <Tab.Navigator
-        tabBarOptions={{
-          activeTintColor: PRIMARY,
-        }}>
+      <Tab.Navigator tabBarOptions={{activeTintColor: PRIMARY}}>
         <Tab.Screen
           name="Dashboard"
           component={Dashboard}
