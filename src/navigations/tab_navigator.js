@@ -3,11 +3,11 @@ import {connect} from 'react-redux';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {getFamilies} from '_actions/families';
 import {getVenues} from '_actions/venues';
-import Dashboard from '_scenes/dashboard';
-import Members from '_scenes/members';
-import Venues from '_scenes/venues';
-import Notifications from '_scenes/notifications';
-import Settings from '_scenes/settings';
+import Dashboard from '_screens/dashboard';
+import Members from '_screens/members';
+import Venues from '_screens/venues';
+import Notifications from '_screens/notifications';
+import Settings from '_screens/settings';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {PRIMARY} from '_styles/colors';
 

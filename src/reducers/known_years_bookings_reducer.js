@@ -10,6 +10,7 @@ const knownYearsBookingsReducer = (state = initialState, action) => {
     case UPDATE_KNOWN_YEARS_BOOKINGS:
       return [...state, action.payload];
     case REMOVE_KNOWN_YEARS_BOOKINGS:
+      console.log('REMOVE_KNOWN_YEARS_BOOKINGS');
       return [];
     default:
       return state;

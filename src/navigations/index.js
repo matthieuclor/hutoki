@@ -4,8 +4,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {connect} from 'react-redux';
 import AuthNavigator from './auth_navigator';
 import TabNavigator from './tab_navigator';
-import Splash from '_scenes/splash';
-import Booking from '_scenes/booking';
+import Splash from '_screens/splash';
+import Booking from '_screens/booking';
 
 const Stack = createStackNavigator();
 
