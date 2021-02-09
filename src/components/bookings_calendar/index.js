@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import moment from 'moment';
 import {getYearBookings} from '_actions/year_bookings';
-import {updateKnownYearsBookings} from '_actions/known_years_bookings';
 import {removeYearBookings} from '_actions/year_bookings';
-import {removeKnownYearsBookings} from '_actions/known_years_bookings';
 import {uniqBy} from 'lodash';
 import {CalendarList} from 'react-native-calendars';
 import {View} from 'react-native';
@@ -20,6 +18,9 @@ class BookingsCalendar extends Component {
   constructor(props) {
     super(props);
     this.calendarList = createRef();
+    this.state = {
+      knownYearsBookings: [],
+    };
   }
 
   componentDidUpdate({currentVenue}) {
@@ -27,16 +28,22 @@ class BookingsCalendar extends Component {
       this.props.currentVenue !== currentVenue &&
       this.calendarList.current.state.currentMonth
     ) {
-      this.removeBookings().then(
+      this.removeBookings().then(() =>
         this.checkForYearData(this.getCurrentMonths()),
       );
     }
   }
 
+  clearKnownYearsBookings = () => {
+    return new Promise((resolve) => {
+      this.setState({knownYearsBookings: []}, resolve);
+    });
+  };
+
   removeBookings = async () => {
     await Promise.all(
       this.props.removeYearBookings(),
-      this.props.removeKnownYearsBookings(),
+      this.clearKnownYearsBookings(),
     );
   };
 
@@ -50,9 +57,11 @@ class BookingsCalendar extends Component {
 
   checkForYearData(months) {
     uniqBy(months, 'year').map((month) => {
-      if (!this.props.knownYearsBookings.includes(month.year)) {
+      if (!this.state.knownYearsBookings.includes(month.year)) {
         this.props.getYearBookings(month.year);
-        this.props.updateKnownYearsBookings(month.year);
+        this.setState({
+          knownYearsBookings: [...this.state.knownYearsBookings, month.year],
+        });
       }
     });
   }
@@ -100,7 +109,6 @@ class BookingsCalendar extends Component {
 const mapStateToProps = (state) => {
   return {
     yearBookings: state.yearBookings,
-    knownYearsBookings: state.knownYearsBookings,
     currentVenue: state.currentVenue,
   };
 };
@@ -108,10 +116,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getYearBookings: (year) => dispatch(getYearBookings(year)),
-    updateKnownYearsBookings: (knownYear) =>
-      dispatch(updateKnownYearsBookings(knownYear)),
     removeYearBookings: () => dispatch(removeYearBookings()),
-    removeKnownYearsBookings: () => dispatch(removeKnownYearsBookings()),
   };
 };
 

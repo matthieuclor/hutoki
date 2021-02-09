@@ -24,7 +24,7 @@ class VenuesSelector extends Component {
   onViewableItemsChanged = ({viewableItems}) => {
     if (
       viewableItems[0] &&
-      viewableItems[0].item.id.toString() !== this.props.currentVenue.id
+      viewableItems[0].item.id !== parseInt(this.props.currentVenue.id, 10)
     ) {
       this.props.setCurrentVenue(viewableItems[0].item.id);
     }

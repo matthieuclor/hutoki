@@ -7,7 +7,6 @@ import currentVenueReducer from '_reducers/current_venue_reducer';
 import familiesReducer from '_reducers/families_reducer';
 import venuesReducer from '_reducers/venues_reducer';
 import yearBookingsReducer from '_reducers/year_bookings_reducer';
-import knownYearsBookingsReducer from '_reducers/known_years_bookings_reducer';
 
 const rootReducer = combineReducers({
   authentification: authentificationReducer,
@@ -17,7 +16,6 @@ const rootReducer = combineReducers({
   families: familiesReducer,
   venues: venuesReducer,
   yearBookings: yearBookingsReducer,
-  knownYearsBookings: knownYearsBookingsReducer,
 });
 
 const configureStore = () => {
