@@ -872,9 +872,9 @@
     regenerator-runtime "^0.13.4"
 
 "@babel/runtime@^7.8.4":
-  version "7.13.16"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.16.tgz#673e7b84c1f6287d96d483fa65cd3db792d53e22"
-  integrity sha512-7VsWJsI5USRhBLE/3of+VU2DDNWtYHQlq2IHu2iL15+Yx4qVqP8KllR6JMHQlTKWRyDk9Tw6unkqSusaHXt//A==
+  version "7.13.17"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.17.tgz#8966d1fc9593bf848602f0662d6b4d0069e3a7ec"
+  integrity sha512-NCdgJEelPTSh+FEFylhnP1ylq848l1z9t9N0j1Lfbcw0+KXGjsTvUmkxy+voLLXB5SOKMbLLx4jxYliGrYQseA==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -1288,9 +1288,9 @@
     chalk "^3.0.0"
 
 "@react-native-async-storage/async-storage@^1.13.3":
-  version "1.15.2"
-  resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.15.2.tgz#895898363fbb8f6db477629fd4ba0b013fe27484"
-  integrity sha512-E1SajKtyeLwi6JVfMZQx+I01z3ZvA0/O2e09EVFzU75YK0696S5N2CqeKlxAZQFVSvzh+Jfq0q412Kdkuh+l6A==
+  version "1.15.3"
+  resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.15.3.tgz#af4eae2ba66228cfbc24ecf803665abd085cd615"
+  integrity sha512-dmkK6sNOKPGVDUuM2WvMXfkCEzG3/MZnv0mfixntpAip83d5YEi3gLkvPet2JLSWw3PstOqdklm6/MALNBbUGg==
   dependencies:
     deep-assign "^3.0.0"
 
@@ -6792,9 +6792,9 @@ react-is@^16.12.0, react-is@^16.13.0, react-is@^16.13.1, react-is@^16.7.0, react
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
 react-native-calendars@^1.1209.0:
-  version "1.1257.0"
-  resolved "https://registry.yarnpkg.com/react-native-calendars/-/react-native-calendars-1.1257.0.tgz#39fdd76eec0ba66b159162314656ec23f2366627"
-  integrity sha512-nBL+ZTTUqYKJnjZZIpuAU6iC3zGxJge+NC0nPauwlgOgpCTLK1MZcBd+TjbK5cldRvzFles6dKpF5FW6Jhks5A==
+  version "1.1258.0"
+  resolved "https://registry.yarnpkg.com/react-native-calendars/-/react-native-calendars-1.1258.0.tgz#7626ceaa92f6114c31e924d881890fe16981efff"
+  integrity sha512-gO4It/EU94vWZQ7/73RxV0TCm2y1+a4j44YHzjd25eo20n4NAb5+wi2A2uOC9rCunTUfKzu/jKSFwhS4IdbGtw==
   dependencies:
     hoist-non-react-statics "^3.3.1"
     immutable "^4.0.0-rc.12"
