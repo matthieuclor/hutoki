@@ -1713,9 +1713,9 @@
   integrity sha512-cHYfKsnwllYhjOzuC5q1VpguABBeecUp24yFluHpn/BQaVxB1CuQ1FSRZCzrPxrkIfWISXV2LbeoBthLWg0+0A==
 
 "@types/node@^12.0.12":
-  version "12.20.13"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.20.13.tgz#e743bae112bd779ac9650f907197dd2caa7f0364"
-  integrity sha512-1x8W5OpxPq+T85OUsHRP6BqXeosKmeXRtjoF39STcdf/UWLqUsoehstZKOi0CunhVqHG17AyZgpj20eRVooK6A==
+  version "12.20.16"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.20.16.tgz#1acf34f6456208f495dac0434dd540488d17f991"
+  integrity sha512-6CLxw83vQf6DKqXxMPwl8qpF8I7THFZuIwLt4TnNsumxkp1VsRZWT8txQxncT/Rl2UojTsFzWgDG4FRMwafrlA==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -2313,9 +2313,9 @@ bindings@^1.5.0:
     file-uri-to-path "1.0.0"
 
 boolean@^3.0.1:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/boolean/-/boolean-3.0.4.tgz#aa1df8749af41d7211b66b4eee584722ff428c27"
-  integrity sha512-5pyOr+w2LNN72F2mAq6J0ckHUfJYSgRKma7e/wlcMMhgOLV9OI0ERhERYXxUqo+dPyVxcbXKy9n+wg13+LpNnA==
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/boolean/-/boolean-3.1.2.tgz#e30f210a26b02458482a8cc353ab06f262a780c2"
+  integrity sha512-YN6UmV0FfLlBVvRvNPx3pz5W/mUoYB24J4WSXOKP/OOJpi+Oq6WYqPaNTHzjI0QzwWtnvEd5CGYyQPgp1jFxnw==
 
 boxen@^1.2.1:
   version "1.3.0"
@@ -2781,9 +2781,9 @@ concat-stream@^1.6.0, concat-stream@^1.6.2:
     typedarray "^0.0.6"
 
 config-chain@^1.1.11:
-  version "1.1.12"
-  resolved "https://registry.yarnpkg.com/config-chain/-/config-chain-1.1.12.tgz#0fde8d091200eb5e808caf25fe618c02f48e4efa"
-  integrity sha512-a1eOIcu8+7lUInge4Rpf/n4Krkf3Dd9lqhljRzII1/Zno/kRtUWnznPO3jOKBmTEktkt3fkxisUcivoj0ebzoA==
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/config-chain/-/config-chain-1.1.13.tgz#fad0795aa6a6cdaff9ed1b68e9dff94372c232f4"
+  integrity sha512-qj+f8APARXHrM0hraqXYb2/bOVSV4PvJQlNZ/DVj0QrmNM2q2euizkeuVckQ57J+W0mRH6Hvi+k50M4Jul2VRQ==
   dependencies:
     ini "^1.3.4"
     proto-list "~1.2.1"
@@ -2833,9 +2833,9 @@ core-js@^2.2.2, core-js@^2.4.1:
   integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
 core-js@^3.6.5:
-  version "3.13.1"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.13.1.tgz#30303fabd53638892062d8b4e802cac7599e9fb7"
-  integrity sha512-JqveUc4igkqwStL2RTRn/EPFGBOfEZHxJl/8ej1mXJR75V3go2mFF4bmUYkEIT1rveHKnkUlcJX/c+f1TyIovQ==
+  version "3.15.2"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.15.2.tgz#740660d2ff55ef34ce664d7e2455119c5bdd3d61"
+  integrity sha512-tKs41J7NJVuaya8DxIOCnl8QuPHx5/ZVbFo1oKgVl1qHFBBrDctzQGtuLjPpRdNTWmKPH6oEvgN/MUID+l485Q==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -2957,10 +2957,17 @@ debug@^3.2.7:
   dependencies:
     ms "^2.1.1"
 
-debug@^4.0.1, debug@^4.1.0, debug@^4.1.1:
+debug@^4.0.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.1.tgz#f0d229c505e0c6d8c49ac553d1b13dc183f6b2ee"
   integrity sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==
+  dependencies:
+    ms "2.1.2"
+
+debug@^4.1.0, debug@^4.1.1:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
+  integrity sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==
   dependencies:
     ms "2.1.2"
 
@@ -3136,9 +3143,9 @@ electron-to-chromium@^1.3.723:
   integrity sha512-2Tg+7jSl3oPxgsBsWKh5H83QazTkmWG/cnNwJplmyZc7KcN61+I10oUgaXSVk/NwfvN3BdkKDR4FYuRBQQ2v0A==
 
 electron@^11.1.0:
-  version "11.4.7"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-11.4.7.tgz#8833297da7f188cf33ef1cf55d47051144fa1e87"
-  integrity sha512-ZObBEsLrD1mIjF15tClcyDsOisOmwpE/+EcZNhBmB5N2WBjskhQHkFczNEOSTTzQ9w0kSWQUPQjLbmKQ3fD/NQ==
+  version "11.4.10"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-11.4.10.tgz#7bcbca82810b82c2f2765824c5e11e3061272ea4"
+  integrity sha512-aQTRgRdHwCW68gxz9qvGCfOUvR4NBbdecLB/mEWX8fMncDFvPMmm+dq2D6zSWWVEKywmsj3+wMMVn3UV2Cl2CQ==
   dependencies:
     "@electron/get" "^1.0.1"
     "@types/node" "^12.0.12"
@@ -6898,10 +6905,10 @@ rc@^1.0.1, rc@^1.1.6:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-devtools-core@4.13.5:
-  version "4.13.5"
-  resolved "https://registry.yarnpkg.com/react-devtools-core/-/react-devtools-core-4.13.5.tgz#803e9ae8f7ab46deaa04129b376f3f21b2eb6ef1"
-  integrity sha512-k+P5VSKM6P22Go9IQ8dJmjj9fbztvKt1iRDI/4wS5oTvd1EnytIJMYB59wZt+D3kgp64jklNX/MRmY42xAQ08g==
+react-devtools-core@4.14.0:
+  version "4.14.0"
+  resolved "https://registry.yarnpkg.com/react-devtools-core/-/react-devtools-core-4.14.0.tgz#4b9dc50937ed4cf4c04fa293430cac62d829fa8b"
+  integrity sha512-cE7tkSUkGCDxTA79pntDGJCBgzNN/XxA3kgPdXujdfSfEfVhzrItQIEsN0kCN/hJJACDvH2Q8p5+tJb/K4B3qA==
   dependencies:
     shell-quote "^1.6.1"
     ws "^7"
@@ -6915,15 +6922,15 @@ react-devtools-core@^4.6.0:
     ws "^7"
 
 react-devtools@^4.10.1:
-  version "4.13.5"
-  resolved "https://registry.yarnpkg.com/react-devtools/-/react-devtools-4.13.5.tgz#918426ed4802d24e743a675c653d9802c74bf93e"
-  integrity sha512-7Q8ZkhXmN+hbtGc9mOMJUhk4yio8fmX6SOUG1VohDVvOATQPIm7EPNW7ZhzQG0S6k03JpzbcqW9qITGM8v6shw==
+  version "4.14.0"
+  resolved "https://registry.yarnpkg.com/react-devtools/-/react-devtools-4.14.0.tgz#d6ff008be6c4fe26b72b3aea3b295e65d590527b"
+  integrity sha512-zGb3Vt1fvYCUYuK4cmpaGWyCwwsioX8YqBZPUGL3QTLFoB/glUsgOsZWviiyhnfBuhbp5iiMQz0VBKfms9pB2w==
   dependencies:
     cross-spawn "^5.0.1"
     electron "^11.1.0"
     ip "^1.1.4"
     minimist "^1.2.3"
-    react-devtools-core "4.13.5"
+    react-devtools-core "4.14.0"
     update-notifier "^2.1.0"
 
 react-is@^16.12.0, react-is@^16.13.0, react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
@@ -8690,9 +8697,9 @@ ws@^1.1.0, ws@^1.1.5:
     ultron "1.0.x"
 
 ws@^7:
-  version "7.4.6"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-7.4.6.tgz#5654ca8ecdeee47c33a9a4bf6d28e2be2980377c"
-  integrity sha512-YmhHDO4MzaDLB+M9ym/mDA5z0naX8j7SIlT8f8z+I0VtzsRbekxEutHSme7NPS2qE8StCYQNUnfWdXta/Yu85A==
+  version "7.5.3"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.3.tgz#160835b63c7d97bfab418fc1b8a9fced2ac01a74"
+  integrity sha512-kQ/dHIzuLrS6Je9+uv81ueZomEwH0qVYstcAQ4/Z93K8zeko9gtAbttJWzoC5ukqXY1PpoouV3+VSOqEAFt5wg==
 
 ws@^7.0.0:
   version "7.4.2"
